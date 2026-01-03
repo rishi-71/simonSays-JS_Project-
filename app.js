@@ -51,7 +51,12 @@ function checkAns(){
     if(userSequence[idx] === gameSequence[idx]){
         console.log("same value");
     }else {
-        h2.innerText = `Game Over Press any key to start`;
+        h2.innerHTML = `Game Over <b>Your Score is ${level}</b>Press any key to start`;
+        document.querySelector("body").style.backgroundColor="red";
+        setTimeout(function() {
+            document.querySelector("body").style.backgroundColor="white";
+        },150)
+        reset();
     }
 }
 
@@ -70,3 +75,10 @@ let allBtns = document.querySelectorAll(".btn");
 for(btn of allBtns){
     btn.addEventListener("click",btnPress);
 } 
+
+function reset (){
+    gameSequence=[];
+    userSequence=[];
+    gameStarted=false;
+    level=0;
+}
